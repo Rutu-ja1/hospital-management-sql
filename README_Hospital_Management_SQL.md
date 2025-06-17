@@ -71,16 +71,50 @@ FROM billing b
 JOIN patients p ON b.patient_id = p.patient_id
 JOIN treatments t ON b.treatment_id = t.treatment_id;
 ```
+### 5. Doctor’s Daily Schedule
+```sql
+Copy
+Edit
+SELECT 
+    d.name AS doctor_name,
+    a.appointment_date,
+    a.appointment_time,
+    p.name AS patient_name,
+    a.status
+FROM appointments a
+JOIN doctors d ON a.doctor_id = d.doctor_id
+JOIN patients p ON a.patient_id = p.patient_id
+WHERE d.name = 'Dr. Mehta'
+ORDER BY a.appointment_date, a.appointment_time;
+```
+ ### 6. Most Recent Treatments Done
+```sql
+Copy
+Edit
+SELECT 
+    t.treatment_id,
+    p.name AS patient_name,
+    t.diagnosis,
+    t.prescribed_medicine,
+    t.cost
+FROM treatments t
+JOIN appointments a ON t.appointment_id = a.appointment_id
+JOIN patients p ON a.patient_id = p.patient_id
+ORDER BY t.treatment_id DESC
+LIMIT 5;
+```
+### 7. Total Number of Appointments Per Doctor
+```sql
+Copy
+Edit
+SELECT 
+    d.name AS doctor_name,
+    COUNT(a.appointment_id) AS total_appointments
+FROM doctors d
+JOIN appointments a ON d.doctor_id = a.doctor_id
+GROUP BY d.name;
+```
 
----
-
-## ✅ How to Run
-
-1. Clone or download this project.
-2. Open the SQL script in MySQL Workbench or any SQL IDE.
-3. Execute the schema to create tables.
-4. Insert sample data from `insert_sample_data.sql`.
-5. Run analysis queries from `HMS_queries.sql`.
 
 ---
 
