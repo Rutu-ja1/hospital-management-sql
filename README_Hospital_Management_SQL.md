@@ -1,4 +1,4 @@
-![Hospital Management System](./cover.png)
+![Hospital Management System](./Cover.png)
 
 # 🏥 Hospital Management System (SQL Project)
 
