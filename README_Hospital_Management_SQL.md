@@ -1,3 +1,4 @@
+![Hospital Management System](./cover.png)
 
 # 🏥 Hospital Management System (SQL Project)
 
