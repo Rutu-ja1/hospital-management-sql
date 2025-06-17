@@ -115,6 +115,9 @@ FROM doctors d
 JOIN appointments a ON d.doctor_id = a.doctor_id
 GROUP BY d.name;
 ```
+## 🧩 ER Diagram
+
+![ER Diagram](./ER.png)
 
 
 ---
