@@ -90,8 +90,6 @@ ORDER BY a.appointment_date, a.appointment_time;
 ```
  ### 6. Most Recent Treatments Done
 ```sql
-Copy
-Edit
 SELECT 
     t.treatment_id,
     p.name AS patient_name,
