@@ -112,6 +112,27 @@ FROM doctors d
 JOIN appointments a ON d.doctor_id = a.doctor_id
 GROUP BY d.name;
 ```
+### 8. Logging Patient Deletion
+```sql
+CREATE TRIGGER after_patient_delete
+AFTER DELETE ON Patient
+FOR EACH ROW
+BEGIN
+  INSERT INTO Patient_Log (patient_id, action)
+  VALUES (OLD.patient_id, 'Deleted');
+END;
+```
+### 9. Auto-update Doctor Schedule
+```sql
+CREATE TRIGGER after_appointment_insert
+AFTER INSERT ON Appointments
+FOR EACH ROW
+BEGIN
+  UPDATE Doctor_Schedule
+  SET is_available = 'No'
+  WHERE doctor_id = NEW.doctor_id AND appointment_date = NEW.appointment_date;
+END;
+```
 ## 🧩 ER Diagram
 
 ![ER Diagram](./ER.png)
