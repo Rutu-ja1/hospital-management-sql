@@ -104,8 +104,7 @@ LIMIT 5;
 ```
 ### 7. Total Number of Appointments Per Doctor
 ```sql
-Copy
-Edit
+
 SELECT 
     d.name AS doctor_name,
     COUNT(a.appointment_id) AS total_appointments
